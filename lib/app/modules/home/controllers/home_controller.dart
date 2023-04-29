@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:permission_handler/permission_handler.dart' as handler;
 
 import '../../../data/generate_request_model.dart';
 import '../../../data/generated_output_model.dart';
@@ -82,7 +82,12 @@ class HomeController extends GetxController {
   }
 
   Future<void> saveImage() async {
-    bool isGranted = await Permission.manageExternalStorage.request().isGranted;
+    Get.showSnackbar(GetSnackBar(
+      showProgressIndicator: true,
+      message: "Downloading...",
+      animationDuration: 100.milliseconds,
+    ));
+    bool isGranted = await handler.Permission.storage.request().isGranted;
     if (!isGranted) {
       snackBar("Please give me permission to save your image!");
       return;
@@ -93,13 +98,16 @@ class HomeController extends GetxController {
         _imageBytes!,
         name: "${DateTime.now().millisecondsSinceEpoch}",
       );
+      if (Get.isSnackbarOpen) {
+        Get.closeAllSnackbars();
+      }
       snackBar("Image saved successfully!");
     }
   }
 
   void snackBar(String text) {
     ScaffoldMessenger.of(Get.context!).showSnackBar(
-      SnackBar(content: Text(text)),
+      SnackBar(content: Text(text), duration: 3.seconds),
     );
   }
 
@@ -115,6 +123,13 @@ class HomeController extends GetxController {
 
   openImage() {
     final imageProvider = Image.network(outputModel.value!.imageUrl).image;
-    showImageViewer(Get.context!, imageProvider, onViewerDismissed: () {});
+    showImageViewer(
+      Get.context!,
+      imageProvider,
+      onViewerDismissed: () {},
+      swipeDismissible: true,
+      immersive: false,
+      useSafeArea: true,
+    );
   }
 }
