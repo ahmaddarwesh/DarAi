@@ -1,0 +1,35 @@
+name: DarAi
+version: 1.0.0+1
+publish_to: none
+description: Dar Ai to generate images from text using Ai
+environment: 
+  sdk: '>=2.19.4 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.5
+  get: 4.6.5
+  dio: ^5.1.1
+  easy_image_viewer: ^1.2.0
+  image_gallery_saver: ^1.7.1
+  permission_handler: ^10.2.0
+  flutter_launcher_icons: ^0.13.1
+  http: any
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: 2.0.1
+
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/images/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/ic_launcher.png"
