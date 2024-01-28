@@ -1,16 +1,6 @@
-# dar_ai
+# dar_ai: Text-to-Image Generation App
 
-A new Flutter project.
+Welcome to dar_ai, a cutting-edge Flutter project designed to transform text into compelling images using the Prodia API.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Getting Started:
+Explore the project, meticulously structured with optimal clear architectures. Leveraging Dio as the HTTP client and Getx for state management, route management, and seamless navigations, dar_ai ensures a robust and efficient user experience. Step into the future of text-to-image conversion with dar_ai.
